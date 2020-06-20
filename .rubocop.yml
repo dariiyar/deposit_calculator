@@ -28,3 +28,5 @@ Style/RedundantRegexpEscape:
   Enabled: true
 Style/SlicingWithRange:
   Enabled: true
+Style/FormatStringToken:
+  Enabled: false
