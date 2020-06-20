@@ -1,0 +1,14 @@
+directories:
+  "app":
+    IrresponsibleModule:
+      enabled: false
+  "config":
+    IrresponsibleModule:
+      enabled: false
+  "spec":
+    UtilityFunction:
+      enabled: false
+
+detectors:
+  TooManyStatements:
+    max_statements: 10
