@@ -1,2 +1,3 @@
 .container
-  | Calculator
+  = form_tag '/calculate', class: 'deposit-form', method: :get do
+    - label_tag :currency, :class => 'currency'

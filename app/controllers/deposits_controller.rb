@@ -1,5 +1,6 @@
 class DepositsController < ApplicationController
   get '/' do
-    slim :new
+    @deposit = Deposit.new
+    slim :new, layout: 'layout.slim'
   end
 end

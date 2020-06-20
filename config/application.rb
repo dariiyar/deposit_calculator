@@ -2,6 +2,8 @@ ENV['SINATRA_ENV'] ||= 'development'
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
+require 'sinatra/base'
+require 'padrino-helpers'
 
 config_files = Dir.glob('config/**/*.rb').reject do |f|
   (!f.include?(ENV['SINATRA_ENV']) && f.include?('environment')) || f.include?('application.rb')
