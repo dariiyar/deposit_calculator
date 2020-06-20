@@ -10,5 +10,7 @@ directories:
       enabled: false
 
 detectors:
+  Attribute:
+    enabled: false
   TooManyStatements:
     max_statements: 10

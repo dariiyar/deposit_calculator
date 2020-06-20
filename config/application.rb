@@ -2,7 +2,11 @@ ENV['SINATRA_ENV'] ||= 'development'
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
-require_all(Dir.glob('config/**/*.rb').reject { |f| !f.include?(ENV['SINATRA_ENV']) || f.include?('application.rb') })
+
+config_files = Dir.glob('config/**/*.rb').reject do |f|
+  (!f.include?(ENV['SINATRA_ENV']) && f.include?('environment')) || f.include?('application.rb')
+end
+require_all(config_files)
 
 module Sinatra
   module ApplicationSettings
