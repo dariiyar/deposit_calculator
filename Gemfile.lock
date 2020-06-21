@@ -46,6 +46,7 @@ GEM
     factory_bot_rails (6.0.0)
       factory_bot (~> 6.0.0)
       railties (>= 5.0.0)
+    ffi (1.13.1)
     foreman (0.87.1)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -109,6 +110,9 @@ GEM
     rack (2.2.3)
     rack-protection (2.0.8.1)
       rack
+    rack-sassc (0.1.0)
+      rack (>= 1.0)
+      sassc (~> 2.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails-dom-testing (2.0.3)
@@ -158,6 +162,8 @@ GEM
       parser (>= 2.7.0.1)
     ruby-progressbar (1.10.1)
     ruby2_keywords (0.0.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     shotgun (0.9.2)
       rack (>= 1.0)
     sinatra (2.0.8.1)
@@ -193,6 +199,7 @@ DEPENDENCIES
   foreman
   padrino (~> 0.14.4)
   pry
+  rack-sassc
   rack-test
   rake
   reek
