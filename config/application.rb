@@ -23,4 +23,5 @@ module Sinatra
   end
 end
 
+require_all('app/helpers')
 require_all 'app'

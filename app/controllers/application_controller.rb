@@ -1,7 +1,10 @@
 class ApplicationController < Sinatra::Base
   register Sinatra::ApplicationSettings
-  app_settings
   register Padrino::Helpers
+
+  helpers Sinatra::ViewsHelper
+
+  app_settings
 
   def self.protect_from_csrf
     false

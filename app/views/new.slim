@@ -1,3 +1,15 @@
 .container
   = form_tag '/calculate', class: 'deposit-form', method: :get do
-    - label_tag :currency, :class => 'currency'
+    / = flash_tag(:notice)
+    = content_tag :div, class: 'currency form-group' do
+      = label_tag :currency, :class => 'first'
+      == dropdown_tag :currency, default_text: 'Currency', items: CURRENCIES.inject([]) { |arr,c| arr << [c,c] }
+
+
+      / .ui.dropdown
+      /   input name="gender" type="hidden" /
+      /   i.dropdown.icon
+      /   .default.text Gender
+      /   .menu
+      /     .item data-value="male"  Male
+      /     .item data-value="female"  Female

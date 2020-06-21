@@ -1,1 +1,1 @@
-console.log('main.js')
+DropdownInit.init()

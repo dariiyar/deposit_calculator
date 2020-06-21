@@ -2,6 +2,9 @@ directories:
   "app":
     IrresponsibleModule:
       enabled: false
+  "app/helpers":
+    FeatureEnvy:
+      enabled: false
   "config":
     IrresponsibleModule:
       enabled: false
@@ -14,3 +17,6 @@ detectors:
     enabled: false
   TooManyStatements:
     max_statements: 10
+  IrresponsibleModule:
+    enabled: false
+
