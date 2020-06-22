@@ -5,7 +5,7 @@ module Sinatra
         # initialize new sprockets environment
         set :environment, Sprockets::Environment.new(File.join(root, 'app'))
         set :assets_prefix, '/assets'
-        set :digest_assets, false
+        set :digest_assets, true
 
         environment.js_compressor  = Uglifier.new(harmony: true)
         environment.css_compressor = :scss

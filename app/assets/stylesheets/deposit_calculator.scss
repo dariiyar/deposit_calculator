@@ -1,0 +1,20 @@
+.form-result-wrapper{
+  display: flex;
+  form{
+    width: 20%;
+    .form-group{
+      &.period{
+        display: flex;
+        .dropdown{
+          padding-right: 10px;
+        }
+      }
+      &.submit{
+        padding-top: 15px;
+      }
+    }
+  }
+  .result-container{
+    width: 40%;
+  }
+}

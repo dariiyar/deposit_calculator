@@ -1,16 +1,20 @@
-h3
+h4
   |Deposit Calculator
-
-= form_tag '/calculate', class: 'deposit-form', method: :get do
-  = content_tag :div, class: 'currency form-group' do
-    = label_tag :currency, class: 'label'
-    == dropdown_tag :currency, default_text: 'Currency', items: CURRENCIES.inject([]) {|arr, c| arr << [c, c]}
-  = content_tag :div, class: 'amount form-group' do
-    = label_tag :amount, class: 'label'
-    = number_field_tag :amount, class: 'amount form-control'
-  = content_tag :div, class: 'interest-rate form-group' do
-    = label_tag :interest_rate, class: 'label'
-    = number_field_tag :interest_rate, class: 'interest-rate form-control'
-  = content_tag :div, class: 'start-date form-group' do
-    = label_tag :start_date, class: 'label'
-    = text_field_tag :start_date, class: 'start-date datepicker form-control', value: 'Select a date'
+.form-result-wrapper
+  = form_tag '/calculate', class: 'deposit-form', method: :get do
+    = content_tag :div, class: 'currency form-group' do
+      == dropdown_tag :currency, default_text: CURRENCIES.first, value: CURRENCIES.first,items: CURRENCIES.inject([]) { |arr, c| arr << [c, c] }
+    = content_tag :div, class: 'amount form-group' do
+      = number_field_tag :amount, class: 'amount form-control', placeholder: 'Amount'
+    = content_tag :div, class: 'interest-rate form-group' do
+      = number_field_tag :interest_rate, class: 'interest-rate form-control', placeholder: 'Interest rate'
+    = content_tag :div, class: 'start-date form-group' do
+      = text_field_tag :start_date, class: 'start-date datepicker form-control', placeholder: 'Start date'
+    = content_tag :div, class: 'period form-group' do
+      == dropdown_tag :period_type, default_text: 'Months', value: 'months', items: PERIOD_TYPES.reverse.inject([]) { |arr, t| arr << [t.capitalize, t] }
+      = number_field_tag :period, class: 'period form-control', placeholder: 'Period'
+    = content_tag :div, class: 'inflation_rate form-group' do
+      = number_field_tag :interest_rate, class: 'inflation-rate form-control', placeholder: 'Inflation rate'
+    = content_tag :div, class: 'form-group submit ' do
+      = submit_tag "Submit", class: 'btn btn-primary', id: 'submit_deposit'
+  .result-container

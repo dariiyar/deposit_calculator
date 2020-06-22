@@ -1,7 +1,7 @@
 module Sinatra
   module ViewsHelper
     def dropdown_tag(name, options)
-      input = content_tag(:input, '', name: name, type: :hidden)
+      input = content_tag(:input, '', name: name, type: :hidden, value: options[:value])
       button = content_tag(:button,
                            options[:default_text],
                            class: 'btn btn-secondary dropdown-toggle', type: 'button', id: "dropdown_#{name}",
