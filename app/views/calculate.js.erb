@@ -1,0 +1,5 @@
+<% if @deposit.valid? %>
+<% else %>
+  <% errors = @deposit.errors.messages %>
+  alert('error')
+<% end %>

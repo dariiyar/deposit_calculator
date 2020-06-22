@@ -21,4 +21,10 @@ class Deposit
   rescue StandardError
     errors[:start_date] << 'must be a valid date'
   end
+
+  def initialize(attr = {})
+    attr.keys.each do |t|
+      self.send("#{t}=", attr[t])
+    end
+  end
 end
