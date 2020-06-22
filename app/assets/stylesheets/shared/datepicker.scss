@@ -1,0 +1,93 @@
+.datepicker:not(input){
+  border-radius: 5px;
+  border: 1px solid rgba(139,153,176,0.2);
+  &:hover{
+    border: 1px solid rgba(139,153,176,0.2) !important;
+  }
+  tbody{
+    tr:last-child{
+      td:first-child{
+        border-bottom-left-radius: 9px;
+      }
+      td:last-child{
+        border-bottom-right-radius: 9px;
+      }
+    }
+  }
+}
+.datepicker{
+  padding: 6px !important;
+  &:before{
+    display: none;
+  }
+  &.non-instant-booking{
+    padding-bottom: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    table{
+      &.table-condensed{
+        position: relative;
+        &:after{
+          left: -2px;
+          bottom: -28px;
+          position: absolute;
+          font-size: 11px;
+          font-weight: bold;
+          font-style: italic;
+          content: 'Dates are subject to availability. Your booking will be confirmed in the next 48 hours.';
+          line-height: 15px;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width:414px) {
+    width: 100%;
+  }
+  table{
+    padding: 0px 15px 10px;
+    @media only screen and (max-width:414px) {
+      width: 100%;
+    }
+    thead{
+      tr{
+        th{
+          font-family: inherit;
+          color: #495057;
+          &.datepicker-switch{
+            text-transform: uppercase;
+          }
+          &.datepicker-switch{
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  tr{
+    td{
+      &.day{
+        border: 0;
+        height: 30px !important;
+        width: 30px !important;
+        border-radius: 15px;
+        font-size: 13px;
+        padding: 5px 8px;
+        &.start-date{
+          background-color: #495057 !important;
+          color: #FFFFFF !important;
+          font-weight: bold;
+        }
+        &:hover:not(.disabled):not(.old):not(.new){
+          color: #ffffff !important;
+        }
+      }
+      &.old,&.new,&.disabled{
+        color: #8b8f94 !important;
+        background-color: unset !important;
+      }
+      color: #495057 !important;
+    }
+  }
+}
+
+

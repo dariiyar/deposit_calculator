@@ -30,3 +30,9 @@ Style/SlicingWithRange:
   Enabled: true
 Style/FormatStringToken:
   Enabled: false
+Metrics/MethodLength:
+  Exclude:
+    - config/**/*
+Metrics/AbcSize:
+  Exclude:
+    - config/**/*

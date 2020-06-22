@@ -1,15 +1,16 @@
-.container
-  = form_tag '/calculate', class: 'deposit-form', method: :get do
-    / = flash_tag(:notice)
-    = content_tag :div, class: 'currency form-group' do
-      = label_tag :currency, :class => 'first'
-      == dropdown_tag :currency, default_text: 'Currency', items: CURRENCIES.inject([]) { |arr,c| arr << [c,c] }
+h3
+  |Deposit Calculator
 
-
-      / .ui.dropdown
-      /   input name="gender" type="hidden" /
-      /   i.dropdown.icon
-      /   .default.text Gender
-      /   .menu
-      /     .item data-value="male"  Male
-      /     .item data-value="female"  Female
+= form_tag '/calculate', class: 'deposit-form', method: :get do
+  = content_tag :div, class: 'currency form-group' do
+    = label_tag :currency, class: 'label'
+    == dropdown_tag :currency, default_text: 'Currency', items: CURRENCIES.inject([]) {|arr, c| arr << [c, c]}
+  = content_tag :div, class: 'amount form-group' do
+    = label_tag :amount, class: 'label'
+    = number_field_tag :amount, class: 'amount form-control'
+  = content_tag :div, class: 'interest-rate form-group' do
+    = label_tag :interest_rate, class: 'label'
+    = number_field_tag :interest_rate, class: 'interest-rate form-control'
+  = content_tag :div, class: 'start-date form-group' do
+    = label_tag :start_date, class: 'label'
+    = text_field_tag :start_date, class: 'start-date datepicker form-control', value: 'Select a date'

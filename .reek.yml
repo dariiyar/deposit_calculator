@@ -6,6 +6,8 @@ directories:
     FeatureEnvy:
       enabled: false
   "config":
+    TooManyStatements:
+      enabled: false
     IrresponsibleModule:
       enabled: false
   "spec":

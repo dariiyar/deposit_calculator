@@ -16,8 +16,9 @@ module Sinatra
       configure do
         set :root, File.expand_path('../', File.dirname(__FILE__))
         set :views, (proc { File.join(root, 'app/views/') })
-        set :public_folder, (proc { File.join(root, 'app/assets/') })
+        set :public_folder, (proc { File.join(root, 'public') })
       end
+      assets_settings
       env_settings
     end
   end
