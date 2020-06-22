@@ -1,6 +1,6 @@
 module Sinatra
   module ViewsHelper
-    def dropdown_tag(name, options)
+    def dropdown_field_tag(name, options)
       input = content_tag(:input, '', name: name, type: :hidden, value: options[:value])
       button = content_tag(:button,
                            options[:default_text],
@@ -11,7 +11,21 @@ module Sinatra
       end
     end
 
+    def form_group_control_tag(type, name, options = {})
+      input_options = options[:input_options]
+      input_options[:class] = form_class(name, 'form-control', input_options[:class])
+      content_tag :div, class: form_class(name, 'form-group', options[:class]) do
+        send("#{type}_tag", name, input_options) +
+          content_tag(:div, '', class: 'help-block hidden')
+      end
+    end
+
     private
+
+    def form_class(name, class_name, classes = '')
+      classes ||= ''
+      classes + " #{name} #{class_name}"
+    end
 
     def dropdown_items(items)
       el = ''

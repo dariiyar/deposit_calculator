@@ -1,5 +1,26 @@
+var input;
+find_input = function  (key) {
+    return $(".form-control." + key);
+}
+remove_errors = function (input) {
+    if(input===undefined) return;
+    input.removeClass('is-invalid');
+    input.siblings('.help-block').addClass('hidden')
+}
 <% if @deposit.valid? %>
+    <% Deposit.attributes.each do |key| %>
+      remove_errors(find_input("<%="#{key.to_s}"%>"))
+    <% end %>
+    $('.result-container').empty().append("<%= render(:deposit_calculation).html_safe %>")
 <% else %>
-  <% errors = @deposit.errors.messages %>
-  alert('error')
+<% errors = @deposit.errors.messages %>
+  <% valid_attributes = Deposit.attributes - errors.keys %>
+  <% valid_attributes.each do |key| %>
+      remove_errors(find_input("<%="#{key.to_s}"%>"))
+<% end %>
+  <% errors.keys.each do |key| %>
+     input = find_input("<%="#{key.to_s}"%>")
+     input.addClass('is-invalid');
+     input.siblings('.help-block').addClass('error').text("<%=errors[key].first.html_safe %>").removeClass('hidden')
+  <% end %>
 <% end %>

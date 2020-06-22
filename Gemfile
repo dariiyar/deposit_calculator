@@ -7,8 +7,8 @@ gem 'padrino', '~> 0.14.4', require: false
 gem 'pry'
 gem 'rake'
 gem 'require_all'
-gem 'sass'
 gem 'sinatra', require: false
+gem 'sinatra-asset-pipeline', '~> 2.2.0'
 gem 'slim'
 gem 'sprockets'
 gem 'sprockets-helpers'

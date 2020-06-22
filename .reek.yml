@@ -21,4 +21,14 @@ detectors:
     max_statements: 10
   IrresponsibleModule:
     enabled: false
+  FeatureEnvy:
+    exclude:
+      - "Deposit#initialize"
+  UncommunicativeVariableName:
+    exclude:
+      - "DepositsController"
+  UtilityFunction:
+    exclude:
+      - "Sinatra::ViewsHelper#form_class"
+
 

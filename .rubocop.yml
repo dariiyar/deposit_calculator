@@ -30,6 +30,8 @@ Style/SlicingWithRange:
   Enabled: true
 Style/FormatStringToken:
   Enabled: false
+Style/RedundantFetchBlock:
+  Enabled: true
 Metrics/MethodLength:
   Exclude:
     - config/**/*

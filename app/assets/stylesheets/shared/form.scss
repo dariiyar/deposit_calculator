@@ -1,5 +1,18 @@
 form{
-  input{
+  .form-group{
+    .help-block{
+      font-size: 13px;
+      padding-bottom: 5px;
+      &.error{
+        color: #dc3545;
+      }
+    }
+  }
+  .form-control{
+    &.submit{
+      width: auto;
+      text-transform: capitalize;
+    }
     &:focus{
       box-shadow: 0 0 0 0.05rem rgba(0,123,255,0.25);
     }

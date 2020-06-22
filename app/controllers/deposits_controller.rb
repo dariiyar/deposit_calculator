@@ -5,7 +5,7 @@ class DepositsController < ApplicationController
   end
 
   get '/calculate' do
-    @deposit = Deposit.new params.reject{|p|p.start_with?('_')}
+    @deposit = Deposit.new(params.reject { |p| p.start_with?('_') })
     render 'calculate.js.erb'
   end
 end

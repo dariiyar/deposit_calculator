@@ -5,8 +5,13 @@
     .form-group{
       &.period{
         display: flex;
+        flex-wrap: wrap;
         .dropdown{
+          width: 45%;
           padding-right: 10px;
+        }
+        .period{
+          width:55%;
         }
       }
       &.submit{

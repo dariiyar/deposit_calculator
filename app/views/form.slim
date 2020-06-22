@@ -2,19 +2,24 @@ h4
   |Deposit Calculator
 .form-result-wrapper
   = form_tag '/calculate', class: 'deposit-form', method: :get, data: {remote: true} do
-    = content_tag :div, class: 'currency form-group' do
-      == dropdown_tag :currency, default_text: CURRENCIES.first, value: CURRENCIES.first,items: CURRENCIES.inject([]) { |arr, c| arr << [c, c] }
-    = content_tag :div, class: 'amount form-group' do
-      = number_field_tag :amount, class: 'amount form-control', placeholder: 'Amount'
-    = content_tag :div, class: 'interest-rate form-group' do
-      = number_field_tag :interest_rate, class: 'interest-rate form-control', placeholder: 'Interest rate'
-    = content_tag :div, class: 'start-date form-group' do
-      = text_field_tag :start_date, class: 'start-date datepicker form-control', placeholder: 'Start date', autocomplete: :off
+    = form_group_control_tag :dropdown_field,
+            :currency,
+            input_options: { default_text: CURRENCIES.first, value: CURRENCIES.first,
+                             items: CURRENCIES.inject([]) { |arr, c| arr << [c, c] }}
+    = form_group_control_tag :number_field, :amount,input_options: { placeholder: 'Amount', min: 0 }
+    = form_group_control_tag :number_field, :interest_rate, input_options: { placeholder: 'Interest rate', min: 0 }
+    = form_group_control_tag :text_field,
+            :start_date,
+            input_options: { class: 'datepicker', placeholder: 'Start date', autocomplete: :off }
     = content_tag :div, class: 'period form-group' do
-      == dropdown_tag :period_type, default_text: 'Months', value: 'months', items: PERIOD_TYPES.reverse.inject([]) { |arr, t| arr << [t.capitalize, t] }
-      = number_field_tag :period, class: 'period form-control', placeholder: 'Period'
-    = content_tag :div, class: 'inflation_rate form-group' do
-      = number_field_tag :interest_rate, class: 'inflation-rate form-control', placeholder: 'Inflation rate'
-    = content_tag :div, class: 'form-group submit ' do
-      = submit_tag "Submit", class: 'btn btn-primary', id: 'submit_deposit', data: {remote: true}
+      = dropdown_field_tag :period_type,
+              default_text: 'Months',
+              value: 'months',
+              items: PERIOD_TYPES.reverse.inject([]) { |arr, t| arr << [t.capitalize, t] }
+      = number_field_tag :period, class: 'period form-control', placeholder: 'Period', min: 0
+      = content_tag(:div, '', class: 'help-block hidden')
+    = form_group_control_tag :number_field, :inflation_rate, input_options: { placeholder: 'Inflation rate', min: 0 }
+    = form_group_control_tag :submit,
+            :submit,
+            input_options: { class: 'btn btn-primary', id: 'submit_deposit', data: {remote: true} }
   .result-container
