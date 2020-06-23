@@ -1,5 +1,10 @@
 form{
   .form-group{
+    &.period{
+      .help-block{
+        margin-left: 100px;
+      }
+    }
     .help-block{
       font-size: 13px;
       padding-bottom: 5px;

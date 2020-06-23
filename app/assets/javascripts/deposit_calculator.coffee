@@ -1,6 +1,11 @@
 $(document).on 'turbolinks:load', ->
     DropdownInit.init()
-    DatepickerInit.init()
+    DatepickerInit.init({
+        autoclose: true
+        todayHighlight: false
+        format: 'd M yyyy'
+        orientation: 'bottom'
+      })
     $('#submit_deposit').on 'click', (ev) ->
         ev.preventDefault()
         form = $('.deposit-form').eq(0)
