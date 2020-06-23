@@ -5,7 +5,11 @@ class DepositsController < ApplicationController
   end
 
   get '/calculate' do
-    @deposit = Deposit.new(params.reject { |p| p.start_with?('_') })
-    render 'calculate.js.erb'
+    result = Services::DepositCalculation.perform(Deposit.new(params.reject { |p| p.start_with?('_') }))
+    if result.success?
+      render 'calculation_result.js.erb', locals: { data: result.data }
+    else
+      render 'calculation_error.js.erb', locals: { errors: result.errors }
+    end
   end
 end

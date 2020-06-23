@@ -24,5 +24,5 @@ module Sinatra
   end
 end
 
-require_all('app/helpers')
+require_all(%w[app/services app/helpers])
 require_all 'app'

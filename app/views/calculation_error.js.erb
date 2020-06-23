@@ -1,0 +1,10 @@
+<%= render(:input_error_functions) %>
+<% valid_attributes = Deposit.attributes - errors.keys %>
+<% valid_attributes.each do |key| %>
+  remove_errors(find_input("<%="#{key.to_s}"%>"))
+<% end %>
+<% errors.keys.each do |key| %>
+  input = find_input("<%="#{key.to_s}"%>")
+  input.addClass('is-invalid');
+  input.siblings('.help-block').addClass('error').text("<%=errors[key].first.html_safe %>").removeClass('hidden')
+<% end %>

@@ -38,3 +38,9 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Exclude:
     - config/**/*
+Layout/LineLength:
+  Exclude:
+    - spec/**/*
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*

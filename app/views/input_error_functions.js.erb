@@ -1,0 +1,9 @@
+var input;
+find_input = function  (key) {
+    return $(".form-control." + key);
+}
+remove_errors = function (input) {
+    if(input===undefined) return;
+    input.removeClass('is-invalid');
+    input.siblings('.help-block').addClass('hidden')
+}

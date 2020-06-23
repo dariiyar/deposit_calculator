@@ -1,0 +1,6 @@
+<%= render(:input_error_functions) %>
+<% Deposit.attributes.each do |key| %>
+  remove_errors(find_input("<%="#{key.to_s}"%>"))
+<% end %>
+$('.result-container').empty().append("<%= render(:deposit_calculation).html_safe %>")
+
