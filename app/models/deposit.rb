@@ -23,7 +23,7 @@ class Deposit
                             greater_than: 0,
                             message: 'should be number and equal or bigger than 1' }
   validate do
-    DateTime.parse(start_date)
+    Date.parse(start_date) unless start_date.instance_of?(Date)
   rescue StandardError
     errors[:start_date] << 'must be a valid date'
   end
@@ -32,7 +32,31 @@ class Deposit
     attr.each_key.each { |key| send("#{key}=", attr[key]) }
   end
 
+  def start_date=(value)
+    instance_variable_set(:@start_date, Date.parse(value)) rescue instance_variable_set(:@start_date, (value))
+  end
+
   def self.attributes
     ATTRS
+  end
+
+  def total_months
+    period_type == 'months' ? period : period * 12
+  end
+
+  def total_days
+    (start_date + total_months.month) - start_date
+  end
+
+  def day_interest_rate
+    (total_days / 365.to_d * interest_rate) / total_days
+  end
+
+  def day_interest
+    day_interest_rate / 100 * amount.to_d
+  end
+
+  def interest
+    day_interest * total_days
   end
 end

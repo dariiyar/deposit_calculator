@@ -44,3 +44,7 @@ Layout/LineLength:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+Style/RescueModifier:
+  Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
