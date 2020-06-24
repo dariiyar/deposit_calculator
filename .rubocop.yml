@@ -35,6 +35,7 @@ Style/RedundantFetchBlock:
 Metrics/MethodLength:
   Exclude:
     - config/**/*
+    - app/models/concerns/deposit/attributes.rb
 Metrics/AbcSize:
   Exclude:
     - config/**/*

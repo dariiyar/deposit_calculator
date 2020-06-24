@@ -30,5 +30,11 @@ detectors:
   UtilityFunction:
     exclude:
       - "Sinatra::ViewsHelper#form_class"
+  DuplicateMethodCall:
+    exclude:
+      - 'Concerns::Deposit::Attributes'
+  ControlParameter:
+    exclude:
+      - "Concerns::Deposit::Attributes#self.respond_to_missing?"
 
 

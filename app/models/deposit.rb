@@ -1,8 +1,6 @@
 class Deposit
   include ActiveModel::Validations
-
-  ATTRS = %i[currency amount interest_rate start_date period period_type inflation_rate].freeze
-  attr_accessor(*ATTRS)
+  include Concerns::Deposit::Attributes
 
   validates :currency, presence: true, inclusion: { in: CURRENCIES, message: '%{value} is not a valid type' }
   validates :amount,
@@ -19,8 +17,7 @@ class Deposit
   validates :period_type, presence: true, inclusion: { in: PERIOD_TYPES, message: '%{value} is not a valid type' }
   validates :inflation_rate,
             allow_blank: true,
-            numericality: { only_integer: true,
-                            greater_than: 0,
+            numericality: { greater_than: 0,
                             message: 'should be number and equal or bigger than 1' }
   validate do
     Date.parse(start_date) unless start_date.instance_of?(Date)
@@ -30,14 +27,6 @@ class Deposit
 
   def initialize(attr = {})
     attr.each_key.each { |key| send("#{key}=", attr[key]) }
-  end
-
-  def start_date=(value)
-    instance_variable_set(:@start_date, Date.parse(value)) rescue instance_variable_set(:@start_date, (value))
-  end
-
-  def self.attributes
-    ATTRS
   end
 
   def total_months

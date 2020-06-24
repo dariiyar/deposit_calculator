@@ -24,7 +24,7 @@ module Services
     end
 
     def months_table
-      (@deposit.total_months + 1).times.to_a.each_with_object([]) { |index, ar| ar << table_row(index) }
+      (1..(@deposit.total_months + 1)).each_with_object([]) { |index, ar| ar << table_row(index) }
     end
 
     def table_row(index)
