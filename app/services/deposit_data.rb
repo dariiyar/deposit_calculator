@@ -1,5 +1,5 @@
 module Services
-  class DepositCalculation
+  class DepositData
     def self.perform(*args, &block)
       new(*args, &block).perform
     end

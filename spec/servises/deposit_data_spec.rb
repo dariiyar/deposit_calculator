@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-RSpec.describe Services::DepositCalculation do
+RSpec.describe Services::DepositData do
   describe '#perform' do
     context 'with valid deposit object' do
       let!(:deposit) do

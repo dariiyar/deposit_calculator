@@ -12,7 +12,7 @@ describe DepositsController do
     let(:result_double) { double('result_double') }
 
     before :each do
-      allow(Services::DepositCalculation).to receive(:perform).and_return(result_double)
+      allow(Services::DepositData).to receive(:perform).and_return(result_double)
       allow(result_double).to receive(:data).and_return({})
       allow(result_double).to receive(:errors).and_return([])
     end
