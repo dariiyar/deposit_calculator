@@ -1,23 +1,41 @@
 table.table.table-striped
   thead
     tr
-      th scope="col"  #
-      th scope="col"  First
-      th scope="col"  Last
-      th scope="col"  Handle
+      th scope="col"  №
+      th.date scope="col"  Date
+      th.days scope="col"  Days
+      th.amount scope="col"  Amount
+      th.payout scope="col"  Payout
   tbody
-    tr
-      th scope="row"  1
-      td Mark
-      td Otto
-      td @mdo
-    tr
-      th scope="row"  2
-      td Jacob
-      td Thornton
-      td @fat
-    tr
-      th scope="row"  3
-      td Larry
-      td the Bird
-      td @twitter
+    - data[:months_table].each_with_index do  |row, index|
+      tr
+        th scope="row"
+          = index
+        td.date = row[0]
+        td.days = row[1]
+        td.amount = format "%.2f", row[2]
+        td.payout = format("%.2f", row[3]) unless row[3].is_a?(String) && row[3].empty?
+    tr.total-row
+      th scope="row"
+      td.total.days Total
+      td.days = data[:total_days]
+      td.amount = format "%.2f", data[:amount]
+      td.payout = format "%.2f", data[:total_payout]
+
+
+
+
+.summary
+  .row
+    .value
+    .currency = data[:currency]
+  .row
+    .value Amount
+    .amount = format "%.2f", data[:amount]
+  .row
+    .value Interest Payout
+    .interest_payout = format "%.2f", data[:interest_payout]
+  .row
+    .value Total Payout
+    .total_payout = format "%.2f", data[:total_payout]
+

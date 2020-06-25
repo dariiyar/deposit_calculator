@@ -1,7 +1,9 @@
 .form-result-wrapper{
   display: flex;
+  flex-wrap: wrap;
   form{
-    width: 20%;
+    width: 220px;
+    margin-right: 80px;
     .form-group{
       &.period{
         display: flex;
@@ -20,6 +22,46 @@
     }
   }
   .result-container{
-    width: 40%;
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    table:not(.table-condensed){
+      width: 100%;
+      font-size: 14px;
+      tr{
+        &.total-row{
+          font-weight: bold;
+        }
+        td,th{
+          text-align: left;
+          @media only screen and (max-width: 414px) {
+            padding: .5rem;
+          }
+          &.days{
+            text-align: center;
+          }
+          &.payout, &.amount{
+            text-align: right;
+          }
+        }
+      }
+    }
+    .summary{
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      font-size: 14px;
+
+      .row{
+        .value{
+          font-weight: normal;
+        }
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 }

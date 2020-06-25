@@ -29,7 +29,7 @@ RSpec.describe Services::DepositData do
         end
         expect(formatted_table).to eq(data[:months_table])
         expect(result.data[:interest_payout].to_f.round(2)).to eq(data[:interest_payout])
-        expect(result.data[:total_payout]).to_f.round(2).to eq(data[:total_payout])
+        expect(result.data[:total_payout].round(2)).to eq(data[:total_payout])
       end
     end
   end

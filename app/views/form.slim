@@ -1,5 +1,7 @@
 h4
   |Deposit Calculator
+  .description
+    |When calculating the interest rate, it is assumed that 365 days a year
 .form-result-wrapper
   = form_tag '/calculate', class: 'deposit-form', method: :get, data: {remote: true} do
     = form_group_control_tag :dropdown_field,
