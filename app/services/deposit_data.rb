@@ -17,12 +17,9 @@ module Services
     private
 
     def data
-      @data[:currency] = @deposit.currency
-      @data[:amount] = @deposit.amount
-      @data[:interest_payout] = @deposit.interest
-      @data[:total_payout] = @deposit.total_payout
-      @data[:total_days] = @deposit.total_days
+      %i[currency amount interest total_days total_payout].each { |attr| @data[attr] = @deposit.send(attr) }
       @data[:months_table] = months_table
+      inflation_data
       @data
     end
 
@@ -35,6 +32,13 @@ module Services
       date = @deposit.start_date + index.month
       row = [date.strftime('%d %b %Y'), (first_month ? '' : (date - (date - 1.month)).to_i), @deposit.amount]
       row << (first_month ? '' : row[1] * @deposit.day_interest)
+    end
+
+    def inflation_data
+      if @deposit.inflation_rate.present? && @deposit.inflation_rate > 0
+        @data[:interest_with_inflation] = @deposit.interest_with_inflation
+        @data[:total_payout_with_inflation] = @deposit.total_payout_with_inflation
+      end
     end
   end
 end

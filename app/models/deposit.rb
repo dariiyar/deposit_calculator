@@ -52,4 +52,24 @@ class Deposit
   def total_payout
     interest + amount
   end
+
+  def day_inflation_rate
+    (total_days / 365.to_d * inflation_rate.to_d) / total_days
+  end
+
+  def day_inflation
+    day_inflation_rate / 100 * amount.to_d
+  end
+
+  def inflation_cost
+    day_inflation * total_days
+  end
+
+  def interest_with_inflation
+    interest - inflation_cost
+  end
+
+  def total_payout_with_inflation
+    total_payout - inflation_cost
+  end
 end

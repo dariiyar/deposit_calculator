@@ -4,13 +4,15 @@ RSpec.describe Services::DepositData do
   describe '#perform' do
     context 'with valid deposit object' do
       let!(:deposit) do
-        Deposit.new amount: 500, currency: 'UAH', interest_rate: 10, start_date: '25 Thu 2020', period: 3, period_type: 'months'
+        Deposit.new amount: 500, currency: 'UAH', interest_rate: 10, inflation_rate: 10, start_date: '25 Thu 2020', period: 3, period_type: 'months'
       end
       let(:data) do
         { amount: 500,
           currency: 'UAH',
-          interest_payout: 12.60,
+          interest: 12.60,
           total_payout: 512.60,
+          interest_with_inflation: 0,
+          total_payout_with_inflation: 500,
           months_table: [
             ['25 Jun 2020', '', 500.00, ''],
             ['25 Jul 2020', 30, 500.00, 4.11],
@@ -28,8 +30,10 @@ RSpec.describe Services::DepositData do
           memo << row
         end
         expect(formatted_table).to eq(data[:months_table])
-        expect(result.data[:interest_payout].to_f.round(2)).to eq(data[:interest_payout])
+        expect(result.data[:interest].to_f.round(2)).to eq(data[:interest])
         expect(result.data[:total_payout].round(2)).to eq(data[:total_payout])
+        expect(result.data[:interest_with_inflation].to_f.round(2)).to eq(data[:interest_with_inflation])
+        expect(result.data[:total_payout_with_inflation].round(2)).to eq(data[:total_payout_with_inflation])
       end
     end
   end
