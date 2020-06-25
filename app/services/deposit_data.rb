@@ -35,10 +35,10 @@ module Services
     end
 
     def inflation_data
-      if @deposit.inflation_rate.present? && @deposit.inflation_rate > 0
-        @data[:interest_with_inflation] = @deposit.interest_with_inflation
-        @data[:total_payout_with_inflation] = @deposit.total_payout_with_inflation
-      end
+      rate = @deposit.inflation_rate
+      return unless rate.present? && rate.positive?
+      @data[:interest_with_inflation] = @deposit.interest_with_inflation
+      @data[:total_payout_with_inflation] = @deposit.total_payout_with_inflation
     end
   end
 end

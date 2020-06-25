@@ -22,9 +22,6 @@ table.table.table-striped
       td.amount = format "%.2f", data[:amount]
       td.payout = format "%.2f", data[:total_payout]
 
-
-
-
 .summary
   .row
     .value
@@ -34,8 +31,15 @@ table.table.table-striped
     .amount = format "%.2f", data[:amount]
   .row
     .value Interest Payout
-    .interest_payout = format "%.2f", data[:interest_payout]
+    .interest_payout = format "%.2f", data[:interest]
   .row
     .value Total Payout
     .total_payout = format "%.2f", data[:total_payout]
+  - if data[:interest_with_inflation].present?
+    .row
+      .value Interest Payout with inflation
+      .interest_payout = format "%.2f", data[:interest_with_inflation]
+    .row
+      .value Total Payout with inflation
+      .total_payout = format "%.2f", data[:total_payout_with_inflation]
 

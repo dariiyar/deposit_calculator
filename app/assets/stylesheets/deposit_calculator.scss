@@ -48,13 +48,14 @@
       }
     }
     .summary{
-      width: 50%;
+      width: 55%;
       display: flex;
       flex-direction: column;
       padding: 15px;
       font-size: 14px;
 
       .row{
+        padding-bottom: 2px;
         .value{
           font-weight: normal;
         }
