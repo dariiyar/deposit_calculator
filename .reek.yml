@@ -29,6 +29,7 @@ detectors:
       - "DepositsController"
   UtilityFunction:
     exclude:
+      - 'Sinatra::ViewsHelper#escape_javascript'
       - "Sinatra::ViewsHelper#form_class"
   DuplicateMethodCall:
     exclude:

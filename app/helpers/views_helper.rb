@@ -1,5 +1,24 @@
 module Sinatra
   module ViewsHelper
+    JS_ESCAPE_MAP = {
+      '\\' => '\\\\',
+      '</' => '<\/',
+      '\r\n' => '\n',
+      '\n' => '\n',
+      '\r' => '\n',
+      '"' => '\\"',
+      "'" => "\\'",
+      '`' => '\\`',
+      '$' => '\\$'
+    }.freeze
+
+    def escape_javascript(javascript)
+      javascript = javascript.to_s
+      expr = %r{/(\\|<\/|\r\n|\342\200\250|\342\200\251|[\n\r"']|[`]|[$])/u}
+      result = javascript.empty? ? '' : javascript.gsub(expr, JS_ESCAPE_MAP)
+      javascript.html_safe? ? result.html_safe : result
+    end
+
     def dropdown_field_tag(name, options)
       input = content_tag(:input, '', name: name, type: :hidden, value: options[:value])
       button = content_tag(:button,

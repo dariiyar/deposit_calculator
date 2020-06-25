@@ -23,9 +23,9 @@ Style/HashTransformValues:
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
 Style/RedundantRegexpCharacterClass:
-  Enabled: true
+  Enabled: false
 Style/RedundantRegexpEscape:
-  Enabled: true
+  Enabled: false
 Style/SlicingWithRange:
   Enabled: true
 Style/FormatStringToken:
@@ -49,3 +49,4 @@ Style/RescueModifier:
   Enabled: false
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
+
