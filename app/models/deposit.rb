@@ -34,7 +34,7 @@ class Deposit
   end
 
   def total_days
-    (start_date + total_months.month) - start_date
+    ((start_date + total_months.month) - start_date).to_i
   end
 
   def day_interest_rate
@@ -47,5 +47,9 @@ class Deposit
 
   def interest
     day_interest * total_days
+  end
+
+  def total_payout
+    interest + amount
   end
 end

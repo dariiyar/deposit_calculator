@@ -17,14 +17,17 @@ module Services
     private
 
     def data
+      @data[:currency] = @deposit.currency
       @data[:amount] = @deposit.amount
-      @data[:months_table] = months_table
       @data[:interest_payout] = @deposit.interest
+      @data[:total_payout] = @deposit.total_payout
+      @data[:total_days] = @deposit.total_days
+      @data[:months_table] = months_table
       @data
     end
 
     def months_table
-      (1..(@deposit.total_months + 1)).each_with_object([]) { |index, ar| ar << table_row(index) }
+      (0..(@deposit.total_months)).each_with_object([]) { |index, ar| ar << table_row(index) }
     end
 
     def table_row(index)
