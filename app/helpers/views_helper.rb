@@ -47,9 +47,8 @@ module Sinatra
     end
 
     def dropdown_items(items)
-      el = ''
-      items.each do |item|
-        el += content_tag(:div, item.first, class: 'dropdown-item', data: { value: item.last })
+      el = items.inject('') do |memo, item|
+        memo + content_tag(:div, item.first, class: 'dropdown-item', data: { value: item.last })
       end
       el.html_safe
     end
